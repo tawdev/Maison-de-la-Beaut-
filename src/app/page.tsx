@@ -1,4 +1,5 @@
-import { servicesMenu, businessInfo } from "@/lib/data";
+"use client";
+
 import { 
   Sparkles, 
   MapPin, 
@@ -6,17 +7,27 @@ import {
   Clock, 
   ChevronRight, 
   Calendar,
-  Instagram,
-  Facebook,
   Award,
-  ShieldCheck
+  ShieldCheck,
+  Star,
+  Quote,
+  HelpCircle,
+  Plus,
+  Minus,
+  CheckCircle2,
+  Gem,
+  Sparkle
 } from "lucide-react";
+import { servicesMenu, businessInfo, testimonials, faqs } from "@/lib/data";
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Navbar } from "@/components/Navbar";
 import { ReservationForm } from "@/components/ReservationForm";
 import { BeforeAfterSlider } from "@/components/ResultSlider";
 
 export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   // JSON-LD for Local SEO
   const jsonLd = {
     "@context": "https://schema.org",
@@ -156,6 +167,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHY CHOOSE US / BENEFITS */}
+      <section className="w-full py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <FadeIn delay={0.1} className="flex flex-col items-center text-center p-8 rounded-2xl bg-secondary/[0.03] border border-secondary/10">
+              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+                <Gem className="w-8 h-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-serif text-foreground mb-4 font-bold">Luxe & Élégance</h3>
+              <p className="text-foreground/60 leading-relaxed italic">
+                Un environnement raffiné conçu pour votre confort absolu et votre sérénité.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.2} className="flex flex-col items-center text-center p-8 rounded-2xl bg-secondary/[0.03] border border-secondary/10">
+              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-serif text-foreground mb-4 font-bold">Produits Premium</h3>
+              <p className="text-foreground/60 leading-relaxed italic">
+                Nous utilisons exclusivement des produits de haute qualité pour des résultats durables.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.3} className="flex flex-col items-center text-center p-8 rounded-2xl bg-secondary/[0.03] border border-secondary/10">
+              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+                <Sparkle className="w-8 h-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-serif text-foreground mb-4 font-bold">Expertise Certifiée</h3>
+              <p className="text-foreground/60 leading-relaxed italic">
+                Une équipe de professionnels passionnés et formés aux dernières technologies.
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* RESULTS SECTION - BEFORE/AFTER SLIDERS */}
       <section className="w-full py-32 bg-[#14120f] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 text-center mb-24">
@@ -170,14 +218,23 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {[
-             { tag: "Soin Visage Hydrafacial", after: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800", before: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=40&w=800&blur=20" },
-             { tag: "Lifting Colombien", after: "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=800", before: "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=40&w=800&blur=20" },
-             { tag: "Peeling au Carbone", after: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800", before: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=40&w=800&blur=20" }
+             { 
+               tag: "Soin Visage Hydrafacial", 
+               img: "/results/Gemini_Generated_Image_565o91565o91565o.png"
+             },
+             { 
+               tag: "Lifting Colombien", 
+               img: "/results/Gemini_Generated_Image_mt3ednmt3ednmt3e.png"
+             },
+             { 
+               tag: "Peeling au Carbone", 
+               img: "/results/Gemini_Generated_Image_4rfycn4rfycn4rfy.png"
+             }
           ].map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
               <BeforeAfterSlider 
-                beforeImage={item.before} 
-                afterImage={item.after} 
+                beforeImage={item.img} 
+                afterImage={item.img} 
                 label={item.tag} 
               />
             </FadeIn>
@@ -337,6 +394,175 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS SECTION */}
+      <section id="temoignages" className="w-full py-32 bg-[#14120f] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <FadeIn className="text-center mb-20">
+            <span className="text-secondary font-medium tracking-[0.4em] uppercase text-[10px]">Témoignages</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mt-4 mb-6">Ce que disent nos <span className="text-secondary italic">Clients</span></h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <FadeIn key={i} delay={i * 0.1} className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 rounded-2xl relative">
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-secondary/20" />
+                <div className="flex gap-1 mb-6">
+                  {[...Array(t.rating)].map((_, idx) => (
+                    <Star key={idx} className="w-4 h-4 text-secondary fill-secondary" />
+                  ))}
+                </div>
+                <p className="text-white/80 italic mb-8 leading-relaxed font-light">"{t.content}"</p>
+                <div>
+                  <h4 className="text-white font-medium">{t.name}</h4>
+                  <p className="text-secondary/60 text-xs uppercase tracking-widest mt-1">{t.role}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section id="faq" className="w-full py-32 bg-[#fdfaf6]">
+        <div className="max-w-4xl mx-auto px-6">
+          <FadeIn className="text-center mb-16">
+            <HelpCircle className="w-12 h-12 text-secondary mx-auto mb-6 opacity-40" />
+            <h2 className="text-4xl font-serif text-[#1a1815]">Questions Fréquentes</h2>
+            <div className="w-16 h-[1px] bg-secondary mx-auto mt-6"></div>
+          </FadeIn>
+
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <FadeIn key={i} delay={i * 0.05} className="border-b border-secondary/10">
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full py-6 flex items-center justify-between text-left group"
+                >
+                  <span className="text-lg font-serif text-[#1a1815] group-hover:text-secondary transition-colors italic">
+                    {faq.question}
+                  </span>
+                  {openFaq === i ? (
+                    <Minus className="w-5 h-5 text-secondary" />
+                  ) : (
+                    <Plus className="w-5 h-5 text-secondary opacity-40 group-hover:opacity-100 transition-opacity" />
+                  )}
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    openFaq === i ? "max-h-[500px] pb-6 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-[#1a1815]/60 leading-relaxed font-light mt-4">
+                    {faq.answer}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MAP SECTION — Premium Integrated Look */}
+      <section className="w-full h-[650px] relative overflow-hidden group">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.9634934898495!2d-7.983611023533!3d31.6348610741639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafec03a45c6131%3A0xc3f60f64c6328637!2sLOT%20LGUIDER%20N48%20AV%20ALLAL%20EL%20FASSI!5e0!3m2!1sfr!2sma!4v1713100000000!5m2!1sfr!2sma"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="absolute inset-0 grayscale contrast-[1.1] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[1500ms]"
+        ></iframe>
+        
+        {/* Overlay Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a1815]/80 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-secondary/5 pointer-events-none border-y border-secondary/10"></div>
+
+        {/* Floating Info Card */}
+        <div className="max-w-7xl mx-auto px-6 h-full relative pointer-events-none">
+          <div className="absolute top-1/2 -translate-y-1/2 left-6 md:left-0 z-20 max-w-sm w-full pointer-events-auto">
+            <FadeIn>
+              <div className="bg-[#1a1815]/95 backdrop-blur-xl p-10 md:p-12 rounded-[2.5rem] border border-white/10 shadow-2xl">
+                <div className="flex flex-col gap-6">
+                  <div className="space-y-2">
+                    <span className="text-secondary font-bold tracking-[0.4em] uppercase text-[9px] block">Notre Emplacement</span>
+                    <h3 className="text-3xl font-serif text-white italic leading-tight">Maison de la Beauté</h3>
+                    <div className="w-12 h-1 bg-secondary rounded-full opacity-60"></div>
+                  </div>
+                  
+                  <div className="space-y-5 py-4 border-y border-white/5">
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+                        <MapPin className="w-4 h-4 text-secondary" />
+                      </div>
+                      <p className="text-white/60 text-sm leading-relaxed">
+                        {businessInfo.address}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+                        <Phone className="w-4 h-4 text-secondary" />
+                      </div>
+                      <p className="text-white/60 text-sm font-medium">
+                        {businessInfo.phone}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <a 
+                      href="https://maps.google.com/maps?q=LOT+LGUIDER+N48+AV+ALLAL+EL+FASSI+Marrakech" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-full bg-secondary text-white py-5 rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] text-center hover:bg-white hover:text-secondary transition-all shadow-xl shadow-secondary/10"
+                    >
+                      Ouvrir dans Google Maps
+                    </a>
+                    <a 
+                      href="#contact" 
+                      className="w-full bg-white/5 border border-white/10 text-white/50 py-5 rounded-2xl text-[10px] font-bold uppercase tracking-[0.2em] text-center hover:text-white hover:border-white/20 transition-all font-sans"
+                    >
+                      Nous Contacter
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* NEWSLETTER SECTION */}
+      <section className="w-full py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+          <FadeIn>
+            <Sparkles className="w-10 h-10 text-secondary mx-auto mb-6 opacity-40" />
+            <h2 className="text-3xl md:text-4xl font-serif text-[#1a1815] mb-4 italic">Offrez-vous une pause <span className="text-secondary">Privilégiée</span></h2>
+            <p className="text-[#1a1815]/60 mb-10 max-w-xl mx-auto font-light">
+              Inscrivez-vous à notre newsletter pour recevoir nos offres exclusives, conseils beauté et nouveautés directement dans votre boîte mail.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Votre adresse email" 
+                className="flex-1 px-6 py-4 bg-[#fdfaf6] border border-secondary/20 rounded-sm focus:outline-none focus:border-secondary transition-colors text-sm"
+                required
+              />
+              <button className="px-8 py-4 bg-secondary text-white uppercase tracking-widest text-[10px] font-bold hover:bg-secondary/90 transition-all rounded-sm shadow-lg shadow-secondary/20">
+                S'abonner
+              </button>
+            </form>
+            <p className="mt-4 text-[10px] text-[#1a1815]/30 uppercase tracking-widest font-bold">
+              Zéro spam. Uniquement de la beauté.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* CONTACT & RESERVATION */}
       <section id="contact" className="w-full py-20 bg-[#1a1815] text-white">
         <div className="max-w-6xl mx-auto px-6">
@@ -361,7 +587,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Téléphone</p>
-                      <a href="tel:+212607790956" className="text-white font-medium hover:text-secondary transition-colors">+212 607-790956</a>
+                      <a href={`tel:${businessInfo.phoneRaw}`} className="text-white font-medium hover:text-secondary transition-colors">{businessInfo.phone}</a>
                     </div>
                   </div>
 
@@ -371,7 +597,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Adresse</p>
-                      <p className="text-white font-medium leading-relaxed">LOT LGUIDER N48<br/>AV ALLAL EL FASSI, Maroc</p>
+                      <p className="text-white font-medium leading-relaxed">{businessInfo.address}</p>
                     </div>
                   </div>
 
@@ -381,7 +607,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Email</p>
-                      <a href="mailto:contact@beaute.com" className="text-white font-medium hover:text-secondary transition-colors">contact@Beauté.com</a>
+                      <a href={`mailto:${businessInfo.email}`} className="text-white font-medium hover:text-secondary transition-colors">{businessInfo.email}</a>
                     </div>
                   </div>
 
@@ -391,7 +617,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Horaires</p>
-                      <p className="text-white font-medium">Lun – Sam : 09:00 – 20:00</p>
+                      <p className="text-white font-medium">{businessInfo.openingHours}</p>
                     </div>
                   </div>
                 </div>
@@ -442,10 +668,10 @@ export default function Home() {
               <span className="w-6 h-[1px] bg-secondary"></span> Navigation
             </h4>
             <ul className="space-y-4">
-              {["À Propos", "Nos Services", "La Carte des Soins", "Contact"].map((link, i) => (
+              {["À Propos", "Nos Services", "La Carte", "Témoignages", "FAQ", "Contact"].map((link, i) => (
                 <li key={i}>
                   <a
-                    href={`#${i === 0 ? "about" : i === 1 ? "services" : i === 2 ? "tarifs" : "contact"}`}
+                    href={`#${i === 0 ? "about" : i === 1 ? "services" : i === 2 ? "tarifs" : i === 3 ? "temoignages" : i === 4 ? "faq" : "contact"}`}
                     className="text-white/60 hover:text-secondary transition-colors text-sm flex items-center gap-2 group"
                   >
                     <ChevronRight className="w-3 h-3 text-secondary/50 group-hover:translate-x-1 transition-transform" />
@@ -464,19 +690,19 @@ export default function Home() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/60 text-sm">
                 <Phone className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                <a href="tel:+212607790956" className="hover:text-secondary transition-colors">+212 607-790956</a>
+                <a href={`tel:${businessInfo.phoneRaw}`} className="hover:text-secondary transition-colors">{businessInfo.phone}</a>
               </li>
               <li className="flex items-start gap-3 text-white/60 text-sm">
                 <MapPin className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                <span>LOT LGUIDER N48, AV ALLAL EL FASSI, Maroc</span>
+                <span>{businessInfo.address}</span>
               </li>
               <li className="flex items-start gap-3 text-white/60 text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-secondary mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <a href="mailto:contact@beaute.com" className="hover:text-secondary transition-colors">contact@Beauté.com</a>
+                <a href={`mailto:${businessInfo.email}`} className="hover:text-secondary transition-colors">{businessInfo.email}</a>
               </li>
               <li className="flex items-start gap-3 text-white/60 text-sm">
                 <Clock className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                <span>Lun – Sam : 09:00 – 20:00</span>
+                <span>{businessInfo.openingHours}</span>
               </li>
             </ul>
 
@@ -488,9 +714,12 @@ export default function Home() {
                 </svg>
               </a>
               <a href="#" className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-secondary hover:bg-secondary/10 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
+              </a>
+              <a href={`https://wa.me/${businessInfo.phoneRaw}`} className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/></svg>
               </a>
             </div>
           </div>
@@ -498,7 +727,7 @@ export default function Home() {
 
         {/* Bottom bar */}
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/30 text-xs">
-          <p>&copy; {new Date().getFullYear()} Maison de la Beauté. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} {businessInfo.name}. Tous droits réservés.</p>
           <p className="flex items-center gap-2">
             Site créé par{" "}
             <a

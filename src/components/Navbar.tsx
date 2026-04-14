@@ -18,9 +18,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Expertise", href: "#expertise" },
-    { name: "Carte des soins", href: "#tarifs" },
-    { name: "Avis", href: "#about" },
+    { name: "L'Institut", href: "#about" },
+    { name: "Nos Soins", href: "#services" },
+    { name: "Tarifs", href: "#tarifs" },
+    { name: "Témoignages", href: "#temoignages" },
+    { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -60,12 +62,7 @@ export function Navbar() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <a 
-              href={`tel:${businessInfo.phoneRaw}`} 
-              className="hidden lg:flex items-center gap-2 text-[11px] uppercase tracking-widest text-secondary hover:text-white transition-colors border border-secondary/20 px-4 py-2 rounded-full"
-            >
-              <Phone className="w-3 h-3" /> {businessInfo.phone}
-            </a>
+            
             <a 
               href="#contact" 
               className="hidden sm:flex px-6 py-3 bg-secondary text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-secondary transition-all rounded-full shadow-lg"

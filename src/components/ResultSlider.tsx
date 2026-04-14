@@ -24,6 +24,9 @@ export function BeforeAfterSlider({ beforeImage, afterImage, label }: BeforeAfte
   const onMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
   const onTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
 
+  // Determine if we are using a single split image or two separate ones
+  const isSingleSplit = beforeImage === afterImage;
+
   return (
     <div 
       ref={containerRef}
@@ -32,21 +35,23 @@ export function BeforeAfterSlider({ beforeImage, afterImage, label }: BeforeAfte
       onTouchMove={onTouchMove}
     >
       {/* After Image (Background) */}
-      <img 
-        src={afterImage} 
-        alt="Après" 
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <img 
+          src={afterImage} 
+          alt="Après" 
+          className={`absolute inset-0 w-full h-full object-cover ${isSingleSplit ? 'scale-[2] origin-right' : ''}`}
+        />
+      </div>
 
       {/* Before Image (Clip Path) */}
       <div 
-        className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-75"
+        className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-75 z-10"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
         <img 
           src={beforeImage} 
           alt="Avant" 
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${isSingleSplit ? 'scale-[2] origin-left' : ''}`}
         />
       </div>
 

@@ -36,7 +36,7 @@ export const servicesMenu = [
   {
     category: "Épilation Laser",
     description: "Jambes - Aisselles - Maillot - Visage",
-    image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/results/laser-final.png",
     items: [
       { name: "6 séances demi-jambes + aisselles + maillot", price: "2990 DH" },
       { name: "6 séances visage, aisselles + maillot", price: "1750 DH" },
@@ -97,3 +97,43 @@ export const businessInfo = {
     lng: -7.9811
   }
 };
+
+export const testimonials = [
+  {
+    name: "Sarah M.",
+    role: "Cliente fidèle",
+    content: "Un moment de pure détente. Le massage thérapeutique est exceptionnel et l'accueil est toujours chaleureux. Je recommande vivement !",
+    rating: 5
+  },
+  {
+    name: "Yasmine K.",
+    role: "Soin Visage",
+    content: "J'ai testé le soin hydrafacial et les résultats sont bluffants. Ma peau n'a jamais été aussi éclatante. Merci à toute l'équipe.",
+    rating: 5
+  },
+  {
+    name: "Omar L.",
+    role: "Massage Relaxant",
+    content: "Une oasis de calme à Marrakech. L'endroit est magnifique et les soins sont d'une grande qualité. À faire absolument.",
+    rating: 5
+  }
+];
+
+export const faqs = [
+  {
+    question: "Comment puis-je prendre rendez-vous ?",
+    answer: "Vous pouvez prendre rendez-vous directement via notre formulaire en ligne, nous appeler au +212 607-790956, ou nous envoyer un message sur WhatsApp."
+  },
+  {
+    question: "Quels sont vos horaires d'ouverture ?",
+    answer: "Nous vous accueillons du lundi au samedi, de 09h00 à 20h00. Nous sommes fermés le dimanche."
+  },
+  {
+    question: "Proposez-vous des forfaits cadeaux ?",
+    answer: "Oui, nous proposons des cartes cadeaux personnalisables pour tous nos soins. Contactez-nous pour plus d'informations."
+  },
+  {
+    question: "Où se trouve l'institut ?",
+    answer: "Nous sommes situés au LOT LGUIDER N48 AV ALLAL EL FASSI, à Marrakech. Un emplacement central et facile d'accès."
+  }
+];
