@@ -36,7 +36,7 @@ export const servicesMenu = [
   {
     category: "Épilation Laser",
     description: "Jambes - Aisselles - Maillot - Visage",
-    image: "https://images.unsplash.com/photo-1534644837699-28c055106192?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     items: [
       { name: "6 séances demi-jambes + aisselles + maillot", price: "2990 DH" },
       { name: "6 séances visage, aisselles + maillot", price: "1750 DH" },
@@ -71,7 +71,7 @@ export const servicesMenu = [
   {
     category: "Lifting",
     description: "Raffermissement et lifting du corps.",
-    image: "https://images.unsplash.com/photo-1611077544833-28c11812a14e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     items: [
       { name: "Lifting colombien + massage chaud", duration: "30mn", price: "300 DH" },
       { name: "Lifting jambes et hanches", duration: "1h", price: "400 DH" },
@@ -81,3 +81,19 @@ export const servicesMenu = [
     ],
   },
 ];
+// Centralized Business Information
+export const businessInfo = {
+  name: "Maison de la Beauté",
+  description: "Institut de beauté et de bien-être haut de gamme à Marrakech.",
+  address: "LOT LGUIDER N48 AV ALLAL EL FASSI, Marrakech, Maroc",
+  phone: "+212 607-790956",
+  phoneRaw: "212607790956",
+  email: "contact@maisondelabeaute.ma",
+  openingHours: "Lun – Sam : 09:00 – 20:00",
+  openingHoursSchema: ["Mo-Sa 09:00-20:00"], // SEO Schema format
+  closedDays: [0], // 0 = Dimanche
+  location: {
+    lat: 31.6295, // Approximate for Marrakech
+    lng: -7.9811
+  }
+};
