@@ -80,15 +80,17 @@ export default function Home() {
         {/* Warm gold tone overlay for brand coherence */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-secondary/20 z-0"></div>
 
-        <FadeIn className="relative z-10 max-w-4xl mx-auto text-center px-6 flex flex-col items-center">
-          <span className="text-secondary font-medium tracking-[0.3em] uppercase mb-4 flex items-center gap-2 drop-shadow-md">
-            <Sparkles className="w-4 h-4" /> Institut & Spa
+        <FadeIn className="relative z-10 max-w-5xl mx-auto text-center px-6 flex flex-col items-center">
+          <span className="text-secondary font-bold tracking-[0.5em] uppercase mb-6 flex items-center gap-3 drop-shadow-sm text-[10px] md:text-xs">
+            <Sparkles className="w-4 h-4" /> Institut & Spa de Prestige
           </span>
-          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight drop-shadow-lg">
-            Révélez votre beauté <br /> <span className="text-secondary italic">Naturelle</span>
+          <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[1.05] drop-shadow-2xl tracking-tight">
+            Révélez votre beauté <br /> 
+            <span className="text-secondary italic font-light tracking-normal mt-4 block">Naturelle</span>
           </h1>
-          <p className="text-lg text-white/90 max-w-2xl mb-10 font-sans tracking-wide drop-shadow-md">
-            Découvrez nos soins esthétiques sur-mesure, massages thérapeutiques, et protocoles anti-âge dans un espace luxueux dédié à votre bien-être.
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mb-12 font-sans tracking-wide drop-shadow-lg leading-relaxed font-light">
+            L'expertise de la haute esthétique au service de votre sérénité. <br className="hidden md:block" /> 
+            Combinaison unique de soins sur-mesure et de technologies de pointe.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="#tarifs" className="px-8 py-4 bg-secondary text-white uppercase tracking-widest text-sm hover:bg-secondary/90 transition-all shadow-[0_0_20px_rgba(197,160,89,0.3)] rounded-sm">
